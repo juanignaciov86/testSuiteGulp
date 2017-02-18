@@ -1,0 +1,22 @@
+{
+    "name": "browser-testing",
+    "version": "0.0.1",
+    "description": "A setup for testing browsers and integrating it with various automation processes",
+    "main": "index.js",
+    "scripts": {
+        "test": "gulp test-coverage"
+    },
+    "author": "Michael Katz (silicakes)",
+    "license": "MIT",
+    "devDependencies": {
+        "chai": "^3.5.0",
+        "gulp": "^3.9.1",
+        "gulp-inject": "^4.1.0",
+        "gulp-istanbul": "^1.0.0",
+        "gulp-istanbul-report": "0.0.1",
+        "gulp-mocha-phantomjs": "^0.11.0",
+        "mocha": "^2.5.3",
+        "mocha-phantomjs": "^4.1.0",
+        "mocha-phantomjs-istanbul": "0.0.2"
+    }
+}

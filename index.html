@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="node_modules/mocha/mocha.css">
+    <!-- inject:js -->
+    <script src="tests/instrumented/prueba.js"></script>
+    <!-- endinject -->
+</head>
+<body>
+    <div id="mocha"></div>
+
+    <!-- our mocha and chai testing libraries-->
+    <script src="node_modules/mocha/mocha.js"></script>
+    <script src="node_modules/chai/chai.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+    // binding mocha with phantomJS
+    window.initMochaPhantomJS && window.initMochaPhantomJS();
+    mocha.setup('bdd');
+    </script>
+
+    <!-- inject:tests:js -->
+    <script src="tests/pruebaTest.js"></script>
+    <!-- endinject -->
+
+    <script>
+    //initializing testing
+    mocha.run();
+    </script>
+</body>
+</html>
+</body>
+</html>
