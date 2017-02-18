@@ -17,7 +17,7 @@ gulp.task('instrument', function () {
 
 gulp.task('coverage', ['instrument', 'inject'], function () {
 	return gulp
-		.src('index.html', {read: false})
+		.src('testRunner.html', {read: false})
 		.pipe(mochaPhantomJS(
 			{
 				reporter: ["spec"],
@@ -35,15 +35,12 @@ gulp.task('coverage', ['instrument', 'inject'], function () {
 		});
 });
 
-
-
-
 gulp.task('inject', ['instrument'], function (cb) {
     var paths = {
     	"javascript": ["tests/instrumented/*.js"],
     	tests: ["tests/*.js"]
     };
-	return gulp.src('index.html')
+	return gulp.src('testRunner.html')
 		.pipe(inject(
 			gulp.src(paths.javascript,{read: false}), {
 				relative: true
@@ -55,7 +52,6 @@ gulp.task('inject', ['instrument'], function (cb) {
 			}))
 		.pipe(gulp.dest('.'));
 });
-
 
 gulp.task('injectRunner', function (cb) {
     var paths = {
@@ -78,12 +74,11 @@ gulp.task('injectRunner', function (cb) {
 
 gulp.task('test', ['coverage', 'injectRunner'], function () {
 	return gulp
-		.src('index.html', {read: false})
-		.pipe(mochaPhantomJS(
-			{
-				reporter: ["spec"],
-                phantomjs: {
-					useColors: true
-				}
-			}));
+		.src('testRunner.html', {read: false})
+		.pipe(mochaPhantomJS({
+			reporter: ["spec"],
+            phantomjs: {
+				useColors: true
+			}
+		}));
 });
